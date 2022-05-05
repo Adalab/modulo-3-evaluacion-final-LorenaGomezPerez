@@ -1,7 +1,5 @@
-
-function MovieFilters (props) {
-return <section>
-    <form>
+function FilterMovie (props) {
+    return <>
     <label>Movie</label>
     <input 
     type="text"
@@ -9,8 +7,8 @@ return <section>
     onChange={props.handleFilterMovie}
     value={props.filterMovies}
     />
-    </form>
-    </section>
+    </>
+
 }
 
-export default MovieFilters;
+export default FilterMovie;
