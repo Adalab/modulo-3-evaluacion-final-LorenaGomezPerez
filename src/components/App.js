@@ -1,7 +1,12 @@
 import getDataApi from '../services/moviesApi';
 import { useState, useEffect } from 'react';
+import {Routes, Route, useLocation, matchPath} from 'react-router-dom';
 import MovieSceneList from './MovieSceneList';
 import Filters from './Filters';
+import MovieSceneDetail from './MovieSceneDetail';
+
+
+
 
   function App ()  {
     const [dataTasks, setDataTasks] = useState([]);
@@ -20,24 +25,35 @@ import Filters from './Filters';
 
     
     // función que se encarga de cambiar la variable de estado de las películas filtradas
-    const handleFilterMovie = (ev) => {
-      const inputValue = ev.target.value;
-      setFilterMovies(inputValue);
+    const handleFilterMovie = (value) => {
+      setFilterMovies(value);
     };
 
-    const handleFilterYear = (ev) => {
-      const inputValue = ev.target.value;
-      setFilterYears (inputValue);
-
-    }
+    const handleFilterYear = (value) => {
+      setFilterYears(value);
+    };
 
     
-    // constante que filtra las películas
+    // constante que filtra las películas y los años
     
-    const MoviesFilters = dataTasks.filter((task) => {
+    const MoviesFilters = dataTasks
+    
+    .filter((task) => {
       return task.movie.toLowerCase().includes(filterMovies.toLowerCase());
     })
+    
+    .filter((task) => {
+      if(filterYears === "all"){
+        return true;
+      }
+      else if (filterYears.length === 0) {
+        return true;
+      } else {
+        return filterYears.includes(task.year);
+      }
+    });
 
+    
     // array de todos los años de películas
     const getYears = () => {
       const allYears = dataTasks.map((task)=>task.year);
@@ -45,16 +61,27 @@ import Filters from './Filters';
       {
         return allYears.indexOf(year) === index;
       });
-     return uniqueYears;
-    };
+      return uniqueYears;
+      };
+
+      // Buscar cual es la película que quiero buscar en detalle
+
+      const {pathname} = useLocation();
+      const dataPath = matchPath("/movie/:id", pathname);
+      const movieId= dataPath !==null ? dataPath.params.id: null;
+      const movieFound = dataTasks.find(task=> task.id === movieId);
    
     
-    return (
+      return (
         <>
+        <Routes>
+          <Route path='./movie/:id' element={<MovieSceneDetail movieFound={movieFound}
+          />}/>
+        </Routes>
+        
         <Filters 
         handleFilterMovie = {handleFilterMovie}
         handleFilterYear = {handleFilterYear}
-        filterMovies = {filterMovies}
         uniqueYears = {getYears()}
         />
         <MovieSceneList 
