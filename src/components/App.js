@@ -17,13 +17,12 @@ import MovieSceneDetail from './MovieSceneDetail';
     // variable de estado de años filtrados
     const [filterYears, setFilterYears] = useState ("");
     
-    useEffect(()=> {
-      getDataApi().then((dataApi) => {
+    useEffect(()=> { 
+        getDataApi().then((dataApi) => {
         setDataScenes(dataApi);
       });
     }, []);
 
-    
     // función que se encarga de cambiar la variable de estado de las películas filtradas
     const handleFilterMovie = (value) => {
       setFilterMovies(value);
@@ -33,10 +32,25 @@ import MovieSceneDetail from './MovieSceneDetail';
       setFilterYears(value);
     };
 
+    // Función para evitar el envio de formulario
+
+    const handleSubmit = (ev) => {
+      ev.preventDefault();
+    };
+
+    // función para 
+
+    const SceneNotFound = () => {
+      if(filterMovies !== "" && MoviesFilters.length === 0) {
+        return (
+        <p>No existe una película con el nombre "{filterMovies}".</p>
+        )}
+    }
+
     
-    // constante que filtra las películas y los años
+    // constante que filtra por películas y por años
     
-    const MoviesFilters = dataScenes
+     const MoviesFilters = dataScenes
     
     .filter((scene) => {
       return scene.movie.toLowerCase().includes(filterMovies.toLowerCase());
@@ -80,11 +94,14 @@ import MovieSceneDetail from './MovieSceneDetail';
           element={
             <>
         <Filters 
+        handleSubmit = {handleSubmit}
         handleFilterMovie = {handleFilterMovie}
         handleFilterYear = {handleFilterYear}
         filterMovies = {filterMovies}
+        filterYears = {filterYears}
         uniqueYears = {getYears()}
         />
+        {SceneNotFound()}
         <MovieSceneList 
         MoviesFilters = {MoviesFilters}
         />

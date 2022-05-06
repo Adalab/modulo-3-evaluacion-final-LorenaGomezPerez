@@ -4,13 +4,14 @@ import FilterYear from "./FilterYear";
 function Filters (props) {
 return (
     <section>
-        <form>
-            <FilterMovie
-                handleFilterMovie = {props.handleFilterMovie}/>
-            <FilterYear
+        <FilterMovie
+                handleFilterMovie = {props.handleFilterMovie}
+                filterMovies = {props.filterMovies}/>
+        <FilterYear
                 uniqueYears = {props.uniqueYears}
-                handleFilterYear = {props.handleFilterYear}/> 
-        </form>
+                handleFilterYear = {props.handleFilterYear}
+                filterYears = {props.filterYears}/> 
+        
     </section>
     );
 }
