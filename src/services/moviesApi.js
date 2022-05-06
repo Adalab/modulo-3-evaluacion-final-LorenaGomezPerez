@@ -6,15 +6,16 @@ const getDataApi = () => {
     
     .then((response)=>response.json())
     .then((data)=>{
-        const dataReduced = data.map((task, index)=>{
+        const dataReduced = data.map((scene, index)=>{
         return {
-            poster: task.poster,
-            movie: task.movie,
-            quote: task.full_line,
-            year: task.year,
-            director: task.director,
-            audio: task.audio,
             id: index,
+            poster: scene.poster,
+            movie: scene.movie,
+            quote: scene.full_line,
+            year: scene.year,
+            director: scene.director,
+            audio: scene.audio,
+            
             };
         });
         return dataReduced;

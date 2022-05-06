@@ -1,15 +1,15 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function MovieSceneItem (props) {
     return (
-        <Link to={`/movie/${props.task.id}`}>
+        <Link to={`/movie/${props.scene.id}`}>
         <img width="100" height="100" 
-            alt={props.task.movie} 
-            src={props.task.poster}
+            alt={props.scene.movie} 
+            src={props.scene.poster}
             />
-            <h4>{props.task.movie}</h4>
-            <p>{props.task.quote}</p>
-            <p>{props.task.year}</p>
+            <h4>{props.scene.movie}</h4>
+            <p>{props.scene.quote}</p>
+            <p>{props.scene.year}</p>
         </Link>
     
     )

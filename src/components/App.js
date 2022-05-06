@@ -9,7 +9,7 @@ import MovieSceneDetail from './MovieSceneDetail';
 
 
   function App ()  {
-    const [dataTasks, setDataTasks] = useState([]);
+    const [dataScenes, setDataScenes] = useState([]);
     
     // variable de estado películas filtradas
     const [filterMovies, setFilterMovies] = useState ("");
@@ -19,7 +19,7 @@ import MovieSceneDetail from './MovieSceneDetail';
     
     useEffect(()=> {
       getDataApi().then((dataApi) => {
-        setDataTasks(dataApi);
+        setDataScenes(dataApi);
       });
     }, []);
 
@@ -36,27 +36,27 @@ import MovieSceneDetail from './MovieSceneDetail';
     
     // constante que filtra las películas y los años
     
-    const MoviesFilters = dataTasks
+    const MoviesFilters = dataScenes
     
-    .filter((task) => {
-      return task.movie.toLowerCase().includes(filterMovies.toLowerCase());
+    .filter((scene) => {
+      return scene.movie.toLowerCase().includes(filterMovies.toLowerCase());
     })
     
-    .filter((task) => {
+    .filter((scene) => {
       if(filterYears === "all"){
         return true;
       }
       else if (filterYears.length === 0) {
         return true;
       } else {
-        return filterYears.includes(task.year);
+        return filterYears.includes(scene.year);
       }
     });
 
     
     // array de todos los años de películas
     const getYears = () => {
-      const allYears = dataTasks.map((task)=>task.year);
+      const allYears = dataScenes.map((scene)=>scene.year);
       const uniqueYears = allYears.filter((year, index) => 
       {
         return allYears.indexOf(year) === index;
@@ -66,27 +66,35 @@ import MovieSceneDetail from './MovieSceneDetail';
 
       // Buscar cual es la película que quiero buscar en detalle
 
-      const {pathname} = useLocation();
-      const dataPath = matchPath("/movie/:id", pathname);
-      const movieId= dataPath !==null ? dataPath.params.id: null;
-      const movieFound = dataTasks.find(task=> task.id === movieId);
-   
+      const { pathname } = useLocation();
+      const dataPath = matchPath('/movie/:movieId', pathname);
+      const movieId= dataPath !==null ? dataPath.params.movieId: null;
+      const movieFound = dataScenes.find((scene)=> scene.id === parseInt(movieId));
+    console.log({movieId,movieFound,dataScenes});
     
       return (
         <>
         <Routes>
-          <Route path='./movie/:id' element={<MovieSceneDetail movieFound={movieFound}
-          />}/>
-        </Routes>
-        
+          <Route 
+          path="/"
+          element={
+            <>
         <Filters 
         handleFilterMovie = {handleFilterMovie}
         handleFilterYear = {handleFilterYear}
+        filterMovies = {filterMovies}
         uniqueYears = {getYears()}
         />
         <MovieSceneList 
         MoviesFilters = {MoviesFilters}
         />
+            </>
+          }/>
+          <Route 
+          path="/movie/:movieId" 
+          element={<MovieSceneDetail movieFound={movieFound} scene={filterMovies}/>}/>
+        </Routes>
+    
         </>
     );
   }

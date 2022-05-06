@@ -1,16 +1,19 @@
+import { Link } from 'react-router-dom';
 
 function MovieSceneDetail (props) {
     return (
-        <>
+        <Link to={'/'}>
+        <section key={props.movieFound.index}>
         <img width="100" height="100" 
-            alt={props.task.movie} 
-            src={props.task.poster}
+            alt={props.movieFound.movie} 
+            src={props.movieFound.poster}
             />
-            <h4>{props.task.movie}</h4>
-            <p>{props.task.quote}</p>
-            <p>{props.task.director}</p>
-            <p>{props.task.audio}</p>
-        </>
+            <h4>{props.movieFound.movie}</h4>
+            <p>{props.movieFound.quote}</p>
+            <p>{props.movieFound.director}</p>
+            <p>{props.movieFound.audio}</p> 
+        </section> 
+        </Link>
     );
 }
 
