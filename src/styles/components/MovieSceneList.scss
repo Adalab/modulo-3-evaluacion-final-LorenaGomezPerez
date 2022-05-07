@@ -1,25 +1,34 @@
 .sectionList {
+  width: 100vw;
 
-    width: 100vw;
-
-&__movieContainer {
+  &__movieContainer {
     padding: 30px 10px 30px 10px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    background-color: #D1BE9C;
+    background-color: #d1be9c;
     justify-items: center;
-}
 
-&__movieList{
-    background-color: #D1BE9C;
+    @media all and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media all and (min-width: 1200px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &__movieList {
+    background-color: #d1be9c;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     list-style: none;
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
-    color:#7D4F50;
-}
+    color: #7d4f50;
+  }
 }

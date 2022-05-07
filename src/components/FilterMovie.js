@@ -1,22 +1,22 @@
-import '../styles/components/Filters.scss';
+import "../styles/components/Filters.scss";
 
-function FilterMovie (props) {
+function FilterMovie(props) {
+  const handleChange = (ev) => {
+    props.handleFilterMovie(ev.target.value);
+  };
 
-    const handleChange = (ev) => {
-        props.handleFilterMovie(ev.target.value);
-    };
-
-    return (
-    <form className="formMovie" onSubmit={props.handleSubmit}>
-        <label>Movie</label>
-        <input className='inputMovie'
-            type="text"
-            name="movie"
-            onChange={handleChange}
-            value={props.filterMovies}
-            />
-        </form>
-    )
+  return (
+    <>
+      <label>Movie</label>
+      <input
+        className="inputMovie"
+        type="text"
+        name="movie"
+        onChange={handleChange}
+        value={props.filterMovies}
+      />
+    </>
+  );
 }
 
 export default FilterMovie;

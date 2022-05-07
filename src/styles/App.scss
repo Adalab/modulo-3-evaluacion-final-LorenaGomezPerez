@@ -7,10 +7,11 @@
 @import "components/MovieSceneItem";
 @import "components/MovieSceneDetail";
 
+// Estilos para mensaje de error
 
-
-
-
-
-
-
+.errorMessage {
+  background-color: #d1be9c;
+  text-align: center;
+  height: 100vh;
+  padding-top: 20px;
+}

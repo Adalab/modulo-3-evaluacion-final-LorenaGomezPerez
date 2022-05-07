@@ -1,21 +1,20 @@
-
-
 .filters {
-    background-color:#AA998F;
-    display: flex;
-    justify-content: center;
-   
+  background-color: #aa998f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0 10px;
 }
 
-.formMovie{
-    
-
+.formMovie {
+  display: flex;
+  gap: 5px;
 }
 
-.inputMovie{
-    border-radius: 5px;
+.inputMovie {
+  border-radius: 5px;
 }
 
-.select{
-    border-radius: 5px;
+.select {
+  border-radius: 5px;
 }
