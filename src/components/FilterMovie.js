@@ -1,3 +1,5 @@
+import '../styles/components/Filters.scss';
+
 function FilterMovie (props) {
 
     const handleChange = (ev) => {
@@ -5,9 +7,9 @@ function FilterMovie (props) {
     };
 
     return (
-    <form onSubmit={props.handleSubmit}>
+    <form className="formMovie" onSubmit={props.handleSubmit}>
         <label>Movie</label>
-        <input 
+        <input className='inputMovie'
             type="text"
             name="movie"
             onChange={handleChange}

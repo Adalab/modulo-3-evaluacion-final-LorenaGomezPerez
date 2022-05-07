@@ -1,4 +1,5 @@
 
+
 function FilterYear (props) {
 
     const handleChange = (ev) => {
@@ -16,7 +17,7 @@ function FilterYear (props) {
 return ( 
         <>
         <label htmlFor="year">Year</label>
-        <select name="year" onChange={handleChange} value={props.FilterYear}>
+        <select className="select" name="year" onChange={handleChange} value={props.FilterYear}>
             <option value="all">All</option>
             {renderYears()}
             </select>

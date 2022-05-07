@@ -1,9 +1,10 @@
 import FilterMovie from "./FilterMovie";
 import FilterYear from "./FilterYear";
+import '../styles/components/Filters.scss';
 
 function Filters (props) {
 return (
-    <section>
+    <section className="filters">
         <FilterMovie
                 handleFilterMovie = {props.handleFilterMovie}
                 filterMovies = {props.filterMovies}/>

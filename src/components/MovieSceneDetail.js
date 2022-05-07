@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import '../styles/components/MovieSceneDetail.scss';
 
 function MovieSceneDetail (props) {
     return (
-        <section >
+        <section className='detail' >
             <Link to={'/'}>Inicio</Link>
-        <img width="100" height="100" 
+        <img className='image'
             alt={props.movieFound.movie} 
             src={props.movieFound.poster}
             />

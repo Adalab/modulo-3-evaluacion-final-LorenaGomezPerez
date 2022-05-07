@@ -1,6 +1,9 @@
-import getDataApi from '../services/moviesApi';
+
 import { useState, useEffect } from 'react';
 import {Routes, Route, useLocation, matchPath} from 'react-router-dom';
+
+import getDataApi from '../services/moviesApi';
+import Header from './Header';
 import MovieSceneList from './MovieSceneList';
 import Filters from './Filters';
 import MovieSceneDetail from './MovieSceneDetail';
@@ -88,11 +91,15 @@ import MovieSceneDetail from './MovieSceneDetail';
     
       return (
         <>
+        <Header/>
+  
         <Routes>
+        
           <Route 
           path="/"
           element={
             <>
+        
         <Filters 
         handleSubmit = {handleSubmit}
         handleFilterMovie = {handleFilterMovie}
@@ -111,7 +118,7 @@ import MovieSceneDetail from './MovieSceneDetail';
           path="/movie/:movieId" 
           element={<MovieSceneDetail movieFound={movieFound} scene={filterMovies}/>}/>
         </Routes>
-    
+      
         </>
     );
   }
