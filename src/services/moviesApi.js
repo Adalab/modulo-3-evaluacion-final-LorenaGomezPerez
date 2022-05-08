@@ -1,4 +1,4 @@
-// Función donde hacemos una petición al servidor, y que me devuelve una serie de datos
+// Función que me permite retornar los datos que me devuelve la Api
 
 const getDataApi = () => {
   return fetch(

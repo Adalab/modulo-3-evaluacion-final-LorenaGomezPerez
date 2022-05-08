@@ -4,6 +4,9 @@ function FilterYear(props) {
   const handleChange = (ev) => {
     props.handleFilterYear(ev.target.value);
   };
+
+  // Función que tiene que transformar ese array de datos en un option.
+
   const renderYears = () => {
     return props.uniqueYears.map((year, index) => {
       return (

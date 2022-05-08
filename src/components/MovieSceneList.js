@@ -1,6 +1,8 @@
 import MovieSceneItem from "./MovieSceneItem";
 import "../styles/components/MovieSceneList.scss";
 
+// Componente que pinta toda la lista de películas
+
 function MovieSceneList(props) {
   const htmlTasks = props.MoviesFilters.map((scene) => {
     return (
