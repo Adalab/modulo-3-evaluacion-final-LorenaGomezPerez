@@ -30,7 +30,7 @@ function App() {
     }
   }, []);
 
-  //Función ls
+  //Función LocalStorage
 
   useEffect(() => {
     LocalStorage.set("dataScenes", dataScenes);
